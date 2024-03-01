@@ -29,5 +29,15 @@ public class projectExceptionHandler extends ResponseEntityExceptionHandler {
 
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(AddressNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> handleANFE(AddressNotFoundException exception) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setData("cannot Find Address");
+		structure.setMessage(exception.getMessage());
+		structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
 
 }
