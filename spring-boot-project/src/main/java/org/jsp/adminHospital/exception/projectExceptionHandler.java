@@ -13,7 +13,7 @@ public class projectExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(InvalidCredentialsException.class)
 	public ResponseEntity<ResponseStructure<String>> handleICE(InvalidCredentialsException exception) {
 		ResponseStructure<String> structure = new ResponseStructure<>();
-		structure.setData("cannot Find Merchant");
+		structure.setData("cannot Find Admin");
 		structure.setMessage(exception.getMessage());
 		structure.setStatusCode(HttpStatus.NOT_FOUND.value());
 
@@ -23,7 +23,7 @@ public class projectExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(IdNotFoundException.class)
 	public ResponseEntity<ResponseStructure<String>> handleINFE(IdNotFoundException exception) {
 		ResponseStructure<String> structure = new ResponseStructure<>();
-		structure.setData("cannot Find Merchant");
+		structure.setData("cannot Find Admin");
 		structure.setMessage(exception.getMessage());
 		structure.setStatusCode(HttpStatus.NOT_FOUND.value());
 
