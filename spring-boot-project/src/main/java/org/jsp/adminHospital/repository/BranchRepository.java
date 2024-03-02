@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface BranchRepository extends JpaRepository<Branch,Integer> {
 	@Query("select b from Branch b where b.phone=?1 and b.password=?2")
-	public Optional<Branch> verifyUser(long phone,String password);
+	public Optional<Branch> verifyBranch(long phone,String password);
 	@Query("select b from Branch b where b.email=?1 and b.password=?2")
-	public Optional<Branch> verifyUser(String email,String password);
+	public Optional<Branch> verifyBranch(String email,String password);
 	
-
+	
 }

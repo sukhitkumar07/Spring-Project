@@ -2,8 +2,16 @@ package org.jsp.adminHospital.exception;
 
 
 public class IdNotFoundException extends RuntimeException {
-	@Override
-	public String getMessage() {
-		return "Invalid Id";
+	private String message;
+	public IdNotFoundException(String message) {
+		this.message=message;
 	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	
 }

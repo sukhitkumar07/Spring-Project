@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.jsp.adminHospital.dao.HospitalDao;
 import org.jsp.adminHospital.dto.Hospital;
 import org.jsp.adminHospital.dto.ResponseStructure;
+import org.jsp.adminHospital.exception.IdNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,10 +43,8 @@ public class HospitalService
 			structure.setStatusCode(HttpStatus.OK.value());
 			return new ResponseEntity<ResponseStructure<Hospital>>(structure, HttpStatus.OK);
 		}
-		structure.setData(null);
-		structure.setMessage("Hospital Not Found");
-		structure.setStatusCode(HttpStatus.NOT_FOUND.value());
-		return new ResponseEntity<ResponseStructure<Hospital>>(structure, HttpStatus.NOT_FOUND);
+		
+		throw new IdNotFoundException("given id is not present");
 	}
 
 	public ResponseEntity<ResponseStructure<List<Hospital>>> findAllHospitals() {
@@ -66,9 +65,6 @@ public class HospitalService
 			structure.setStatusCode(HttpStatus.OK.value());
 			return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.OK);
 		}
-		structure.setMessage("Hospital Not Deleted");
-		structure.setData("Hospital Not Found");
-		structure.setStatusCode(HttpStatus.NOT_FOUND.value());
-		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+		throw new IdNotFoundException("id is not valid to delete");
 	}
 }

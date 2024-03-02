@@ -43,7 +43,7 @@ public class AddressService {
 			structure.setStatusCode(HttpStatus.ACCEPTED.value());
 			return new ResponseEntity<ResponseStructure<Address>>(structure, HttpStatus.ACCEPTED);
 		}
-		throw new IdNotFoundException();
+		throw new IdNotFoundException("Adrress id not found");
 	}
 	
 	public ResponseEntity<ResponseStructure<Address>> findById(int id) {

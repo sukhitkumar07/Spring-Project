@@ -39,7 +39,7 @@ public class adminServices {
 			structure.setStatusCode(HttpStatus.ACCEPTED.value());
 			return new ResponseEntity<ResponseStructure<Admin>>(structure, HttpStatus.ACCEPTED);
 		}
-		throw new IdNotFoundException();
+		throw new IdNotFoundException("Admin id not found");
 	}
 
 	public ResponseEntity<ResponseStructure<Admin>> findById(int id) {
@@ -51,7 +51,7 @@ public class adminServices {
 			structure.setStatusCode(HttpStatus.OK.value());
 			return new ResponseEntity<ResponseStructure<Admin>>(structure, HttpStatus.OK);
 		}
-		throw new IdNotFoundException();
+		throw new IdNotFoundException("Admin id not found");
 	}
 
 	public ResponseEntity<ResponseStructure<String>> deleteById(int id) {

@@ -23,10 +23,10 @@ public class BranchDao {
 	
 	}
 	public Optional<Branch> verifyByPhone(long phone,String password){
-		return repository.verifyUser(phone, password);
+		return repository.verifyBranch(phone, password);
 	}
 	public Optional<Branch> verifyByEmail(String email,String password){
-		return repository.verifyUser(email, password);
+		return repository.verifyBranch(email, password);
 	}
 	
 	

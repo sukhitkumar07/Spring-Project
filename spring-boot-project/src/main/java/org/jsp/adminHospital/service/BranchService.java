@@ -1,4 +1,4 @@
-package org.jsp.adminHospital.service;
+	package org.jsp.adminHospital.service;
 
 import java.util.Optional;
 
@@ -19,7 +19,7 @@ public class BranchService {
 	public ResponseEntity<ResponseStructure<Branch>> saveBranch(Branch branch){
 		ResponseStructure<Branch>  structure=new ResponseStructure<>();
 		structure.setData(branchDao.saveBranch(branch));
-		structure.setMesssage("branch saved");
+		structure.setMessage("branch saved");
 		structure.setStatusCode(HttpStatus.CREATED.value());
 		return new ResponseEntity<ResponseStructure<Branch>>(structure,HttpStatus.CREATED);
 		
@@ -27,7 +27,7 @@ public class BranchService {
 	public ResponseEntity<ResponseStructure<Branch>> updateBranch(Branch branch){
 		ResponseStructure<Branch>  structure=new ResponseStructure<>();
 		structure.setData(branchDao.updateBranch(branch));
-		structure.setMesssage("branch saved");
+		structure.setMessage("branch saved");
 		structure.setStatusCode(HttpStatus.ACCEPTED.value());
 		return new ResponseEntity<ResponseStructure<Branch>>(structure,HttpStatus.ACCEPTED);
 		
@@ -37,12 +37,12 @@ public class BranchService {
 		Optional<Branch> recBranch=branchDao.findById(id);
 		if(recBranch.isPresent()) {
 			structure.setData(recBranch.get());
-			structure.setMesssage("Branch found");
+			structure.setMessage("Branch found");
 			structure.setStatusCode(HttpStatus.OK.value());
 			return new ResponseEntity<ResponseStructure<Branch>>(structure,HttpStatus.ACCEPTED);
 			
 	}
-		throw new IdNotFoundException();
+		throw new IdNotFoundException("Branch id not found");
 		
 	}
 	public ResponseEntity<ResponseStructure<Branch>> verifyBranch(long phone,String password){
@@ -50,12 +50,12 @@ public class BranchService {
 		Optional<Branch> recBranch=branchDao.verifyByPhone(phone, password);
 		if(recBranch.isPresent()) {
 			structure.setData(recBranch.get());
-			structure.setMesssage("Branch found");
+			structure.setMessage("Branch found");
 			structure.setStatusCode(HttpStatus.OK.value());
 			return new ResponseEntity<ResponseStructure<Branch>>(structure,HttpStatus.OK);
 			
 	}
-		throw new InvalidCredentialsException();
+		throw new InvalidCredentialsException("Branch id not found");
 		
 	}
 	public ResponseEntity<ResponseStructure<Branch>> verifyBranch(String email,String password){
@@ -63,12 +63,12 @@ public class BranchService {
 		Optional<Branch> recBranch=branchDao.verifyByEmail(email, password);
 		if(recBranch.isPresent()) {
 			structure.setData(recBranch.get());
-			structure.setMesssage("Branch found");
+			structure.setMessage("Branch found");
 			structure.setStatusCode(HttpStatus.OK.value());
 			return new ResponseEntity<ResponseStructure<Branch>>(structure,HttpStatus.OK);
 			
 	}
-		throw new InvalidCredentialsException();
+		throw new InvalidCredentialsException("Branch id not found");
 		
 	}
 }
